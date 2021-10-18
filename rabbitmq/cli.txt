@@ -1,0 +1,25 @@
+resources:
+https://www.rabbitmq.com/management-cli.html
+https://www.ti-enxame.com/pt/rabbitmq/rabbitmq-criando-filas-e-ligacoes-de-uma-linha-de-comando/970182896/
+https://blog.rabbitmq.com/posts/2015/04/scheduling-messages-with-rabbitmq
+https://medium.com/trendyol-tech/rabbitmq-exchange-types-d7e1f51ec825
+
+
+download plugin 
+https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases
+
+commands
+Build the image:
+docker build -t rabbitmq-custom .
+
+Run the docker composer:
+docker-compose up
+
+
+#Comandos CLI para quando for automatizar a implantação
+http://localhost:15672/
+http://{hostname}:15672/cli/rabbitmqadmin to download rabbitmqadmin
+
+python.exe rabbitmqadmin -u root -p root declare exchange name=close-pauta.exchange type:header durable=true arguments={'x-delayed-type': "direct"}
+python.exe rabbitmqadmin -u root -p root declare queue name=close-pauta.queue durable=true
+python.exe rabbitmqadmin -u root -p root declare binding source="close-pauta.exchange" destination_type="queue" destination="close-pauta.queue" routing_key="close-pauta.routingkey"
