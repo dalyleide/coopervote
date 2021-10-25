@@ -28,9 +28,12 @@ docker-compose up
 ### 2. Discovery
 Run ApplicationDiscoverApplication
 
-### 3. Coopervote
+### 3. Coopervote or Coopervote-WebFlux
 Run CoopervoteApplication
 
+- *Is the same API Rest, with different technologies*
+  
+  
 ### 4. Gatway
 Run ApplicationGatewayApplication
 
